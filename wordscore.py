@@ -1,5 +1,3 @@
-import sys
-
 def score_word(word):
     """Scores the word based on scrabble scoring. Wildcards don't score anything"""
 
@@ -39,8 +37,6 @@ def compare_words(letters, compare_word):
 
     if len(compiled_word) >= len(compare_word):
         score = score_word(compiled_word)
-        together = (score, compare_word.upper())
-        #print(together)
         return (score, compare_word.upper())
     else:
         return False

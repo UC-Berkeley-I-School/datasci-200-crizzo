@@ -1,19 +1,20 @@
-import sys
 import wordscore
 
 def run_scrabble(word):
     """Find a list of all possible words to make with a set of scrabble letters."""
+
     if len(word) < 2 or len(word) > 7:
-        raise Exception('Too few or too many letters.')
+        return 'Too few or too many letters.'
     if word.count('?') > 1 or word.count('*') > 1:
-        raise Exception('Too many wild cards.')
+        return 'Too many wild cards.'
+    for char in word:
+        if char.lower() not in 'abcdefghijklmnopqrstuvwxyz?*':
+            return 'Contains a character that\'s not valid'
 
     words_list = load_words()
 
     potential_words = []
 
-    num_total = len(word)
-    num_wild = word.count('?') + word.count('*')
     for single in words_list:
         test = wordscore.compare_words(word, single)
         if type(test) is tuple:
