@@ -23,7 +23,8 @@ def run_scrabble(word):
 
     # print(f'The word is *** {word} ***.')
     # print(f'The word is {num_total} letters long with {num_wild} wildcards.')
-    print(answer)
+    #print(answer)
+    return answer
 
 def load_words():
     f = open('sowpods.txt', 'r')
