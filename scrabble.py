@@ -7,10 +7,6 @@ def run_scrabble(word):
         raise Exception('Too few or too many letters.')
     if word.count('?') > 1 or word.count('*') > 1:
         raise Exception('Too many wild cards.')
-    
-    for char in word:
-        if char.lower not in 'abcedfghijklmnopqrstuvwxyz?*':
-            raise Exception('Character not a scrabble tile.')
 
     words_list = load_words()
 
