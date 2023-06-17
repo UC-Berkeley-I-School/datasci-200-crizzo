@@ -2,10 +2,15 @@ import sys
 import wordscore
 
 def run_scrabble(word):
+    """Find a list of all possible words to make with a set of scrabble letters."""
     if len(word) < 2 or len(word) > 7:
-        print('Too few or too many letters.')
+        raise Exception('Too few or too many letters.')
     if word.count('?') > 1 or word.count('*') > 1:
-        print('Too many wild cards.')
+        raise Exception('Too many wild cards.')
+    
+    for char in word:
+        if char.lower not in 'abcedfghijklmnopqrstuvwxyz?*':
+            raise Exception('Character not a scrabble tile.')
 
     words_list = load_words()
 
