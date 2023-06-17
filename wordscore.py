@@ -1,3 +1,5 @@
+import sys
+
 def score_word(word):
     """Scores the word based on """
 
@@ -15,3 +17,25 @@ def score_word(word):
     else:
         print('Word is either too short or too long.')
         return 0
+    
+def compare_words(letters, compare_word):
+    if len(letters) < len(compare_word):
+        print('You can\'t make a word with less letters than in the word.')
+
+    num_wilds = letters.count('?') + letters.count('*')
+    used_letters = 0
+    
+    for char in compare_word:
+        if len(letters) < 1:
+            break
+
+        if char in letters:
+            used_letters += 1
+            letters = letters.replace(char,'',1)
+
+    print('*'*20)
+    print('used letters', used_letters)
+    
+    
+
+compare_words(sys.argv[1], sys.argv[2])
