@@ -24,7 +24,7 @@ class Auction:
         return 'hello'
 
     def __str__(self):
-        return 'goodbye'
+        return str([self.__users_list, self.__bidders_list])
 
     def execute_round(self):
         pass

@@ -3,7 +3,7 @@ import auction_lastname
 import bidder_lastname
 
 match sys.argv[1]:
-    case 'Auction':
+    case 'Auction.User':
         u = auction_lastname.User()
 
         match sys.argv[2]:
@@ -20,3 +20,9 @@ match sys.argv[1]:
         match sys.argv[2]:
             case 'Repr':
                 print(b)
+    case 'Auction.Auction':
+        a = auction_lastname.Auction(users='hi', bidders='bonjour')
+
+        match sys.argv[2]:
+            case 'Repr':
+                print(a)
