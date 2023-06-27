@@ -1,10 +1,10 @@
 import sys
-import auction_lastname
-import bidder_lastname
+from auction_lastname import Auction, User
+from bidder_lastname import Bidder
 
 match sys.argv[1]:
     case 'Auction.User':
-        u = auction_lastname.User()
+        u = User()
 
         match sys.argv[2]:
             case 'Repr':
@@ -15,14 +15,34 @@ match sys.argv[1]:
                 print(f'There were {temp.count(True)} Trues and {temp.count(False)} Falses.')
                 print(f'The win percentage was {temp.count(True)/len(temp)}')
     case 'Bidder':
-        b = bidder_lastname.Bidder(num_users=1,num_rounds=10)
+        b = Bidder(num_users=1,num_rounds=10)
 
         match sys.argv[2]:
             case 'Repr':
                 print(b)
     case 'Auction.Auction':
-        a = auction_lastname.Auction(users='hi', bidders='bonjour')
+        a = Auction(users='hi', bidders='bonjour')
 
         match sys.argv[2]:
             case 'Repr':
                 print(a)
+    case 'Official.Code':
+        # Initialize bidders
+        b0, b1, b2 = Bidder(1,10), Bidder(1,10), Bidder(1,10)
+
+        # Print out the official bidders
+        all_bidders = [b0, b1, b2]
+        # set this to false if you don't want to print it out
+        # instead of commenting out a bunch of lines
+        PRINT_BIDDERS = True
+        for ind, single in enumerate(all_bidders):
+            if PRINT_BIDDERS:
+                print(f'This is bidder number {ind}')
+                print(single)
+
+        # Initialize Auction
+        auction = Auction([User()],[b0, b1, b2])
+        # Execute a round
+        auction.execute_round()
+        bal = auction.balances
+    
